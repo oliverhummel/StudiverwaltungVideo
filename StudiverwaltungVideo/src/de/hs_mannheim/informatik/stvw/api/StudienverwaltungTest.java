@@ -20,5 +20,19 @@ public class StudienverwaltungTest {
 		daten = stvw.studentenDatenAbfragen(111111);
 		assertNull(daten);
 	}
+	
+	@Test
+	void testPrüfungAnlegen() {
+		Studienverwaltung stvw = new Studienverwaltung();
+		stvw.prüfungAnlegen("Programmierung 2", 2, 10);
+		
+		String daten = stvw.prüfungsDatenAbfragen("Programmierung 2");
+		assertTrue(daten.contains("Programmierung 2"));
+		assertTrue(daten.contains("2. Semester"));
+		assertTrue(daten.contains("10 ECTS"));
+		
+		daten = stvw.prüfungsDatenAbfragen("gibtEsNicht");
+		assertNull(daten);
+	}
 
 }
