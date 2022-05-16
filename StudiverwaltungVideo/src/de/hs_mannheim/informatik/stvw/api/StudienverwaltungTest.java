@@ -1,6 +1,7 @@
 package de.hs_mannheim.informatik.stvw.api;
 
 import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
@@ -33,6 +34,23 @@ public class StudienverwaltungTest {
 		
 		daten = stvw.prüfungsDatenAbfragen("gibtEsNicht");
 		assertNull(daten);
+	}
+	
+	@Test
+	void testPrüfungsAnmeldung() {
+		Studienverwaltung stvw = new Studienverwaltung();
+		
+		stvw.studentAnlegen("Klaus", "Mayer", 123456);
+		stvw.studentAnlegen("Katja", "Fischer", 224561);
+		
+		stvw.prüfungAnlegen("Programmierung 1", 1, 10);
+		stvw.prüfungAnlegen("Programmierung 2", 2, 10);
+		
+		stvw.prüfungAnmelden(123456, "Programmierung 1");
+		stvw.prüfungAnmelden(224561, "Programmierung 1");
+		
+		assertEquals(2, stvw.getAnzahlAnmeldungen("Programmierung 1"));
+		assertEquals(0, stvw.getAnzahlAnmeldungen("Programmierung 2"));
 	}
 
 }

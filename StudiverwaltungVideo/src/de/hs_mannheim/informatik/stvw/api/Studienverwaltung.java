@@ -36,6 +36,27 @@ public class Studienverwaltung {
 		return p.toString();
 	}
 	
+	public void prüfungAnmelden(int matrikelnummer, String prüfungsname) {
+		Student s = findeStudent(matrikelnummer);
+		Prüfung p = findePrüfung(prüfungsname);
+		
+		if (s == null || p == null)
+			return; 	// hier sollte man in der Praxis eine Exception werfen
+		
+		s.prüfungAnmelden(p);
+		p.studentAnmelden(s);
+	}
+	
+	// Hilfsmethode, aktuell nur für das Testen genutzt
+	public int getAnzahlAnmeldungen(String prüfungsname) {
+		Prüfung p = findePrüfung(prüfungsname);
+		
+		if (p == null)
+			return 0;
+		
+		return p.getAnzahlAnmeldungen();
+	}
+	
 	private Student findeStudent(int matrikelnummer) {
 		for (Student s : studierende)
 			if (s.getMatrikelnummer() == matrikelnummer)
