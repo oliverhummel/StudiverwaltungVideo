@@ -1,7 +1,5 @@
 package de.hs_mannheim.informatik.stvw.domain;
 
-import java.util.Objects;
-
 public class Student {
 	private String vorname, name;
 	private int matrikelnummer;

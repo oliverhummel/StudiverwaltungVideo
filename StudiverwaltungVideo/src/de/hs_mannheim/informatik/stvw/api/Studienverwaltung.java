@@ -15,11 +15,12 @@ public class Studienverwaltung {
 	}
 	
 	public String studentenDatenAbfragen(int matrikelnummer) {
-		for (Student s : studierende)
-			if (s.getMatrikelnummer() == matrikelnummer)
-				return s.toString();
+		Student s = findeStudent(matrikelnummer);
 		
-		return null;
+		if (s == null)
+			return null;
+		
+		return s.toString();
 	}
 	
 	public void prüfungAnlegen(String name, int semester, int ects) {
@@ -27,10 +28,28 @@ public class Studienverwaltung {
 	}
 	
 	public String prüfungsDatenAbfragen(String name) {
-		for (Prüfung p : prüfungen)
-			if (p.getName() == name)
-				return p.toString();
+		Prüfung p = findePrüfung(name);
+		
+		if (p == null)
+			return null;
+		
+		return p.toString();
+	}
+	
+	private Student findeStudent(int matrikelnummer) {
+		for (Student s : studierende)
+			if (s.getMatrikelnummer() == matrikelnummer)
+				return s;
 		
 		return null;
 	}
+	
+	private Prüfung findePrüfung(String name) {
+		for (Prüfung p : prüfungen)
+			if (p.getName() == name)
+				return p;
+		
+		return null;
+	}
+	
 }
