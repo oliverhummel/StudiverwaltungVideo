@@ -52,5 +52,27 @@ public class StudienverwaltungTest {
 		assertEquals(2, stvw.getAnzahlAnmeldungen("Programmierung 1"));
 		assertEquals(0, stvw.getAnzahlAnmeldungen("Programmierung 2"));
 	}
+	
+	@Test
+	void testNotenschnittBerechnung() {
+		Studienverwaltung stvw = new Studienverwaltung();
+		
+		stvw.studentAnlegen("Katja", "Fischer", 224561);
+		
+		stvw.prüfungAnlegen("Programmierung 1", 1, 10);
+		stvw.prüfungAnlegen("Datenmanagement", 3, 5);
+		
+		stvw.prüfungAnmelden(224561, "Programmierung 1");
+		stvw.prüfungAnmelden(224561, "Datenmanagement");
+		
+		assertEquals(1, stvw.getAnzahlAnmeldungen("Programmierung 1"));
+		assertEquals(1, stvw.getAnzahlAnmeldungen("Datenmanagement"));
+		
+		// Your mission, should you chose to accept it...
+//		stvw.noteEintragen(224561, "Programmierung 1", 170);
+//		stvw.noteEintragen(224561, "Datenmanagement", 130);
+//		
+//		assertEquals(156, stvw.notenschnittAbfragen(224561));
+	}
 
 }
