@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.hs_mannheim.informatik.stvw.domain.Prüfung;
+import de.hs_mannheim.informatik.stvw.domain.Prüfungsanmeldung;
 import de.hs_mannheim.informatik.stvw.domain.Student;
 
 public class Studienverwaltung {
@@ -43,8 +44,7 @@ public class Studienverwaltung {
 		if (s == null || p == null)
 			return; 	// hier sollte man in der Praxis eine Exception werfen
 		
-		s.prüfungAnmelden(p);
-		p.studentAnmelden(s);
+		Prüfungsanmeldung pam = new Prüfungsanmeldung(s, p);
 	}
 	
 	// Hilfsmethode, aktuell nur für das Testen genutzt

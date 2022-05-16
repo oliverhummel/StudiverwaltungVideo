@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Student {
 	private String vorname, name;
 	private int matrikelnummer;
-	private ArrayList<Prüfung> prüfungen = new ArrayList<>();
+	private ArrayList<Prüfungsanmeldung> anmeldungen = new ArrayList<>();
 	
 	public Student(String vorname, String name, int matrikelnummer) {
 		this.vorname = vorname;
@@ -13,8 +13,8 @@ public class Student {
 		this.matrikelnummer = matrikelnummer;
 	}
 	
-	public void prüfungAnmelden(Prüfung prüfung) {
-		prüfungen.add(prüfung);
+	public void prüfungAnmelden(Prüfungsanmeldung prüfungsanmeldung) {
+		anmeldungen.add(prüfungsanmeldung);
 	}
 	
 	public String getVorname() {

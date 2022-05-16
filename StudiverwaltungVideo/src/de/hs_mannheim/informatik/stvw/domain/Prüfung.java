@@ -6,7 +6,7 @@ public class Prüfung {
 	private String name;
 	private int semester;
 	private int ects;
-	private ArrayList<Student> studierende = new ArrayList<Student>();
+	private ArrayList<Prüfungsanmeldung> anmeldungen = new ArrayList<>();
 	
 	public Prüfung(String name, int semester, int ects) {
 		this.name = name;
@@ -14,13 +14,13 @@ public class Prüfung {
 		this.ects = ects;
 	}
 	
-	public void studentAnmelden(Student student) {
-		studierende.add(student);
+	public void studentAnmelden(Prüfungsanmeldung anmeldung) {
+		anmeldungen.add(anmeldung);
 	}
 	
 	// Hilfsmethode um etwas testen zu können
 	public int getAnzahlAnmeldungen() {
-		return studierende.size();
+		return anmeldungen.size();
 	}
 	
 	public String getName() {
