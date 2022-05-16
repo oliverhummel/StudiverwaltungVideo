@@ -47,6 +47,26 @@ public class Studienverwaltung {
 		Prüfungsanmeldung pam = new Prüfungsanmeldung(s, p);
 	}
 	
+	public void noteEintragen(int matrikelnummer, String prüfungsname, int note) {
+		Student s = findeStudent(matrikelnummer);
+		Prüfung p = findePrüfung(prüfungsname);
+		
+		if (s == null || p == null)
+			return; 
+		
+		s.noteEintragen(p, note);
+		
+	}
+	
+	public int notenschnittAbfragen(int matrikelnummer) {
+		Student s = findeStudent(matrikelnummer);
+		
+		if (s == null)
+			return 0;
+			
+		return s.notenschnittBerechnen();
+	}
+	
 	// Hilfsmethode, aktuell nur für das Testen genutzt
 	public int getAnzahlAnmeldungen(String prüfungsname) {
 		Prüfung p = findePrüfung(prüfungsname);

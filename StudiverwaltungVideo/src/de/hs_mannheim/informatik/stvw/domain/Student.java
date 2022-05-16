@@ -33,6 +33,29 @@ public class Student {
 	public String toString() {
 		return "Student [vorname=" + vorname + ", name=" + name + ", matrikelnummer=" + matrikelnummer + "]";
 	}
+
+	public void noteEintragen(Prüfung p, int note) {
+		for (Prüfungsanmeldung pam : anmeldungen) {
+			if (pam.getPrüfung().equals(p)) {
+				pam.setNote(note);
+				break;
+			}
+		}
+		
+	}
+
+	public int notenschnittBerechnen() {
+		int notenSumme = 0;
+		int ectsSumme = 0;
+		
+		for (Prüfungsanmeldung pam : anmeldungen) {
+			int ects = pam.getPrüfung().getEcts();
+			notenSumme += pam.getNote() * ects;
+			ectsSumme += ects;
+		}
+		
+		return notenSumme / ectsSumme;
+	}
 	
 }
 

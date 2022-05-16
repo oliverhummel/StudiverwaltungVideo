@@ -69,10 +69,10 @@ public class StudienverwaltungTest {
 		assertEquals(1, stvw.getAnzahlAnmeldungen("Datenmanagement"));
 		
 		// Your mission, should you chose to accept it...
-//		stvw.noteEintragen(224561, "Programmierung 1", 170);
-//		stvw.noteEintragen(224561, "Datenmanagement", 130);
-//		
-//		assertEquals(156, stvw.notenschnittAbfragen(224561));
+		stvw.noteEintragen(224561, "Programmierung 1", 170);
+		stvw.noteEintragen(224561, "Datenmanagement", 130);
+		
+		assertEquals(156, stvw.notenschnittAbfragen(224561));
 	}
 
 }
